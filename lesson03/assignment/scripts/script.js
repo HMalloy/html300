@@ -1,6 +1,5 @@
-// jQuery Doc Ready
-
-$(function () {
+document.addEventListener('DOMContentLoaded', function() {
+  // set data for cards
   const cards = [
     {
       "name": "Steve Smith",
@@ -55,15 +54,18 @@ $(function () {
       ]
     }
   ];
-  // array.append(`# ${key} `);
-  // array.append(`the value is ${value}<br>`);
-  const cardHTML = cards.forEach(function(el) {
+  // capture where the cards should be placed
+  let peeps = document.getElementById('people');
+// loop through cards data above
+// pull data into template provided
+  cards.forEach(function(el) {
     let card = (`<div class="card">
       <!-- card body -->
       <div class="card-body">
         <!-- card copy 1 -->
         <div class="card-copy">
           <!-- card image -->
+          <!-- unsure if we are supposed to change out the images, none provided -->
           <div class="card-img">
             <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79" alt="Smartly dress man smiling enthusiastically straight ahead.">
           </div>
@@ -88,6 +90,9 @@ $(function () {
         </div>
       </div>
     </div>`);
-    $(".people").append(card);
+
+    // add cards to section
+    peeps.innerHTML += card;
+
   });
-});
+})

@@ -83,12 +83,10 @@
 
 /* // Medium devices (tablets, 768px and under) */
 @include media-query("mobile") {
-  .card {
-    /* display in column to save space */
-    .card-body {
-      flex-direction: column;
-      justify-content: center;
-    }
+  /* display in column to save space */
+  .card .card-body {
+    flex-direction: column;
+    justify-content: center;
   }
   .card-copy {
   /* align items within first div center */
