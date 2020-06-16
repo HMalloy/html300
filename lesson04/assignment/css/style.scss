@@ -1,0 +1,73 @@
+// Import partials here
+@import 'base.normalize';
+@import 'settings.variables';
+@import 'body.set';
+
+.main {
+  margin:3rem;
+}
+// main bucket where the art pieces are displayed
+#projects {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  // figure for images
+  .art {
+  //  position:absolute;
+    left:0;
+    padding:1rem;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+    opacity:0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    border:1px solid $graygray;
+    &.opaque {
+      opacity:1;
+      -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      filter: alpha(opacity=1);
+    }
+    img {
+      width: 100%;
+    }
+    figcaption {
+      background-color: white;
+    }
+    &__title, &__materials, &__artist {
+      display: flex;
+      flex-direction: column;
+    }
+    &__title {
+      font-weight:bold;
+    }
+  }
+  // styling for the button controls
+  &__controls {
+    display: flex-wrap;
+    text-align: center;
+    .btn {
+      text-align: center;
+      padding:.25rem;
+      cursor:pointer;
+      &__nav {
+        background-color: $brightred;
+        border: 1px solid $red;
+        color:$white;
+        height:2rem;
+        width:2rem;
+        margin-left:-1px;
+        margin-top:-.5px;
+        transition:background-color 0.2s;
+        &:hover, &:active, &:focus {
+          outline: 0;
+          background-color:$red;
+        }
+        .selected {
+          background-color: $black;
+        }
+      }
+    }
+  }
+}
