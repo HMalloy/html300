@@ -379,7 +379,7 @@ body {
     opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
-    border: 1px solid #dfe0e0;
+    border: 3px solid #333333;
     overflow: hidden; }
     #projects .art.opaque {
       opacity: 1;
@@ -409,12 +409,15 @@ body {
       display: flex;
       flex-direction: column; }
     #projects .art__title {
-      font-weight: bold; }
+      font-weight: bold;
+      color: #e4002b;
+      font-size: 1.75rem; }
   #projects__controls {
     display: flex;
     flex-direction: column;
     max-height: 26rem;
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+    padding-top: 3px; }
     #projects__controls .projects__tiles {
       background-color: #ee322d;
       border: 3px solid #e4002b;
@@ -446,14 +449,12 @@ body {
 
 /* // Medium devices (tablets, 768px and under) */
 @media (max-width: 768px) {
-  #projects {
-    width: 50%; }
-    #projects .art {
-      margin-bottom: 3rem;
-      margin-right: 3rem; }
-    #projects__controls .projects__tiles {
-      width: 3rem;
-      height: 3rem; } }
+  #projects .art {
+    margin-bottom: 3rem;
+    margin-right: 3rem; }
+  #projects__controls .projects__tiles {
+    width: 3rem;
+    height: 3rem; } }
 
 /* // Small devices (phones, 576px and under) */
 @media screen and (max-width: 576px) {
@@ -471,3 +472,9 @@ body {
       #projects__controls .projects__tiles {
         width: 3rem;
         height: 3rem; } }
+
+/* // Small devices (small phones, 320px and under) */
+@media screen and (max-width: 320px) {
+  #projects .art {
+    max-width: 85%;
+    height: auto; } }
