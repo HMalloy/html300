@@ -1,5 +1,18 @@
 # Lesson 04 - Transform/Transition Assignment
 
+### Inspiration
+- [GROW](https://www.webdesignerdepot.com/2014/05/8-simple-css3-transitions-that-will-wow-your-users/)
+When hovering over the image it will grow slightly. This is a pretty simple transition effect, I modified it by making it grow slightly less than what is outlined here.
+
+- [FADE](http://css3.bradshawenterprises.com/cfimg/#cfimg7)
+When transitioning between selected images one fades into the next.
+
+I updated this in a couple of ways:
+1. I rewrote it using vanilla JavaScript instead of jQuery.
+2. I used the images themselves for the control, instead of buttons, or span elements used in the example.
+3. I added some transitions for when hovering over the controls, so the changes are smooth.
+4. I used the figure element, instead of just an image, so there was space to include details about the art piece.
+
 ### Required setup if not already installed (it should be)
 - Install [node](https://nodejs.org/en/)
 
