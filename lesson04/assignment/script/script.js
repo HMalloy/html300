@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   // create array for different pieces of Art
   // temporarily using my own pieces, till time to dig into API
   const art = [
@@ -145,30 +145,46 @@ document.addEventListener('DOMContentLoaded', function() {
   let control = document.getElementById('projects__controls');
 
   // loop through art pieces above
-  // pull data into template provided
+  // pull data into templates provided
   art.forEach(function(el) {
-    let piece = (`<figure class="art opaque">
-      <img src="${el.img}" alt="${el.alt}">
+    // template for image figure
+    let piece = (`<figure class="art" id="art-${el.index}">
+      <div class="art__img"><img src="${el.img}" alt="${el.alt}"></div>
       <figcaption><span class="art__title">${el.title}</span><span class="art__materials">${el.materials}</span><span class="art__artist">${el.artist}</span></figcaption>
     </figure>`);
+    // template for thumbnails
+    let tiles = (`<a href="#art-${el.index}" class="projects__tiles"><img src="${el.img}" alt="Thumbnail of ${el.alt}"></a>`)
 
-    let btn = (`<button class="btn btn__nav">${el.index}</button>`)
     // add cards to section
     project.innerHTML += piece;
-    control.innerHTML += btn;
+    // add thumbnails to nav control
+    control.innerHTML += tiles;
   });
 
-  let btn = control.getElementsByTagName('button');
-  let img = project.getElementsByTagName('figure');
+  // make sure the first image is visible on page load
+  project.firstElementChild.classList.add("opaque");
+  // make sure the thumbnail is highlighted on page load
+  control.firstElementChild.classList.add("selected");
 
-  // $(".projects__controls").on('click', 'button', function() {
-  //   $(".projects figure").removeClass("opaque");
-  //
-  //   var newImage = $(this).index();
-  //
-  //   $(".projects img").eq(newImage).addClass("opaque");
-  //
-  //   $(".projects__controls button").removeClass("selected");
-  //   $(this).addClass("selected");
-  // });
-})
+  // get all of the thumbnails
+  let myBtns=document.querySelectorAll('.projects__tiles');
+  //get all of the art pieces
+  let myArt=document.querySelectorAll('.art');
+  myBtns.forEach(function(btn) {
+    btn.addEventListener('click', () => {
+      // remove selected class from previously active item
+      myBtns.forEach(b => b.classList.remove('selected'));
+      // add selected class to clicked item
+      btn.classList.add('selected');
+
+      // hide existing art piece
+      myArt.forEach(c => c.classList.remove('opaque'));
+      
+      // get target of clicked item(thumbnail)
+      let target = btn.getAttribute("href");
+      // find the figure with an ID that matches the target thumbnail
+      document.getElementById(target.substr(1)).classList.add('opaque');
+
+    });
+  });
+ })

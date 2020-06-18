@@ -356,28 +356,53 @@ th {
 /* set body text */
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #333333; }
+  color: #333333;
+  font-size: 1.25rem; }
 
 .main {
   margin: 3rem; }
 
+.container {
+  display: flex; }
+
 #projects {
-  display: flex;
   position: relative;
-  flex-direction: column; }
+  display: block;
+  height: 30rem;
+  width: 30rem; }
   #projects .art {
-    left: 0;
+    position: absolute;
+    text-align: center;
+    margin: 0;
+    padding: 1rem;
     transition: opacity 1s ease-in-out;
     opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
-    border: 1px solid #333333; }
+    border: 1px solid #dfe0e0;
+    overflow: hidden; }
     #projects .art.opaque {
       opacity: 1;
+      z-index: 500;
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
       filter: alpha(opacity=1); }
-    #projects .art img {
-      max-width: 100%; }
+    #projects .art__img {
+      display: block;
+      width: 20rem;
+      height: 20rem;
+      max-width: 100%;
+      overflow: hidden;
+      position: relative; }
+      #projects .art__img img {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: auto;
+        transition: all 0.2s;
+        vertical-align: baseline; }
+        #projects .art__img img:hover {
+          cursor: pointer;
+          transform: scale(1.1); }
     #projects .art figcaption {
       background-color: white; }
     #projects .art__title, #projects .art__materials, #projects .art__artist {
@@ -386,23 +411,63 @@ body {
     #projects .art__title {
       font-weight: bold; }
   #projects__controls {
-    display: flex-wrap;
-    text-align: center; }
-    #projects__controls .btn {
-      text-align: center;
-      padding: .25rem;
-      cursor: pointer; }
-      #projects__controls .btn__nav {
-        background-color: #ee322d;
-        border: 1px solid #e4002b;
-        color: #ffffff;
-        height: 2rem;
-        width: 2rem;
-        margin-left: -1px;
-        margin-top: -.5px;
-        transition: background-color 0.2s; }
-        #projects__controls .btn__nav:hover, #projects__controls .btn__nav:active, #projects__controls .btn__nav:focus {
-          outline: 0;
-          background-color: #e4002b; }
-        #projects__controls .btn__nav .selected {
-          background-color: #000000; }
+    display: flex;
+    flex-direction: column;
+    max-height: 26rem;
+    flex-wrap: wrap; }
+    #projects__controls .projects__tiles {
+      background-color: #ee322d;
+      border: 3px solid #e4002b;
+      color: #ffffff;
+      height: 5rem;
+      width: 5rem;
+      margin-left: -3px;
+      margin-top: -3px;
+      overflow: hidden !important;
+      transition: all 2s; }
+      #projects__controls .projects__tiles.selected {
+        border-color: #333333;
+        background-color: #ffffff;
+        z-index: 300; }
+        #projects__controls .projects__tiles.selected img {
+          cursor: pointer;
+          opacity: 1; }
+      #projects__controls .projects__tiles img {
+        display: block;
+        margin-left: -100%;
+        margin-top: -60%;
+        width: 300%;
+        height: auto;
+        opacity: .5;
+        transition: all .5s; }
+        #projects__controls .projects__tiles img:hover {
+          cursor: pointer;
+          opacity: 1; }
+
+/* // Medium devices (tablets, 768px and under) */
+@media (max-width: 768px) {
+  #projects {
+    width: 50%; }
+    #projects .art {
+      margin-bottom: 3rem;
+      margin-right: 3rem; }
+    #projects__controls .projects__tiles {
+      width: 3rem;
+      height: 3rem; } }
+
+/* // Small devices (phones, 576px and under) */
+@media screen and (max-width: 576px) {
+  .main {
+    margin: 1.5rem; }
+  .container {
+    flex-direction: column-reverse; }
+  #projects {
+    height: auto;
+    width: auto;
+    margin-top: 1rem;
+    margin-bottom: 3rem; }
+    #projects__controls {
+      flex-direction: row; }
+      #projects__controls .projects__tiles {
+        width: 3rem;
+        height: 3rem; } }
