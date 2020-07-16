@@ -4,7 +4,19 @@
 @import 'settings.responsive';
 @import 'components.content';
 
-.author-pic {
-  width: 2rem;
-  width: 2rem;
+.art {
+  img {
+    opacity: .75;
+    transition: all 0.2s;
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+  &__img.rounded-circle {
+    transition: all 0.2s;
+    &:hover {
+      border-radius: 0!important;
+    }
+  }
 }

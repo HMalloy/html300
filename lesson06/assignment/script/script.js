@@ -141,51 +141,164 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     ];
   // capture parent div for art pieces to be displayed in
-  let project = document.getElementById('projects');
-  // capture parent div for image controls
-  let control = document.getElementById('projects__controls');
+  let artPieces = document.getElementById('art');
+  // capture sidebar art space
+  let artSideBar = document.getElementById('sidebar-art');
 
   // loop through art pieces above
   // pull data into templates provided
-  art.forEach(function(el) {
+  if(artPieces){
+    art.forEach(function(el) {
     // template for image figure
-    let piece = (`<figure class="art" id="art-${el.index}">
-      <div class="art__img"><img src="${el.img}" alt="${el.alt}"></div>
-      <figcaption><span class="art__title">${el.title}</span><span class="art__materials">${el.materials}</span><span class="art__artist">${el.artist}</span></figcaption>
-    </figure>`);
-    // template for thumbnails
-    let tiles = (`<a href="#art-${el.index}" class="projects__tiles"><img src="${el.img}" alt="Thumbnail of ${el.alt}"></a>`)
+      let piece = (`<div class="col-12 col-sm-6 col-lg-4">
 
-    // add cards to section
-    project.innerHTML += piece;
-    // add thumbnails to nav control
-    control.innerHTML += tiles;
-  });
-
-  // make sure the first image is visible on page load
-  project.firstElementChild.classList.add("opaque");
-  // make sure the thumbnail is highlighted on page load
-  control.firstElementChild.classList.add("selected");
-
-  // get all of the thumbnails
-  let myBtns=document.querySelectorAll('.projects__tiles');
-  //get all of the art pieces
-  let myArt=document.querySelectorAll('.art');
-  myBtns.forEach(function(btn) {
-    btn.addEventListener('click', () => {
-      // remove selected class from previously active item
-      myBtns.forEach(b => b.classList.remove('selected'));
-      // add selected class to clicked item
-      btn.classList.add('selected');
-
-      // hide existing art piece
-      myArt.forEach(c => c.classList.remove('opaque'));
-
-      // get target of clicked item(thumbnail)
-      let target = btn.getAttribute("href");
-      // find the figure with an ID that matches the target thumbnail
-      document.getElementById(target.substr(1)).classList.add('opaque');
-
+        <figure class="art" id="art-${el.index}">
+          <div class="art__img border border-dark rounded-circle overflow-hidden bg-dark">
+            <img class="art-tip img-fluid" src="${el.img}" alt="${el.alt}" data-toggle="popover" title="${el.title}" data-content="${el.materials} | by ${el.artist}"/>
+          </div>
+        </figure>
+      </div>`);
+      // add cards to section
+      artPieces.innerHTML += piece;
     });
-  });
+  }
+
+
+  // BLOG
+  // array of blog posts
+  const posts = [
+      {
+        "index": 1,
+        "date": "01-11-2020",
+        "img": "http://heatherdaniellehaws.com/images/FemaleNude1.jpg",
+        "alt": "Painting of a redheaded woman dressed in a red nightgown leaning against a wall.",
+        "title": "Blog Post Number One",
+        "teaser":"Nisi dolor ethical, do ut enim nostrud mumblecore hexagon narwhal. Swag offal exercitation DIY franzen. Labore in brooklyn et mumblecore cliche nisi irony.",
+        "content": `<p>Nisi dolor ethical, do ut enim nostrud mumblecore hexagon narwhal. Swag offal exercitation DIY franzen. Labore in brooklyn et mumblecore cliche nisi irony. Af kombucha id literally meditation selfies chartreuse. Health goth adipisicing tilde occaecat stumptown affogato pabst do pork belly, selvage venmo.</p>
+
+        <p>Commodo slow-carb aute raw denim. Fingerstache gluten-free velit irure banjo exercitation. Tbh VHS crucifix, retro godard exercitation XOXO kombucha typewriter. Art party minim irure, godard dreamcatcher direct trade edison bulb glossier pabst. Brunch cred exercitation wolf meggings air plant poutine qui. Banjo aliqua chambray green juice, anim drinking vinegar authentic hoodie meggings hexagon. Microdosing culpa readymade 90's shaman selfies kickstarter commodo tumeric tousled eu.</p>
+
+        <p>Authentic dolore affogato gluten-free, incididunt artisan you probably haven't heard of them coloring book kitsch humblebrag chillwave. Offal keytar dolore, VHS voluptate exercitation waistcoat polaroid. Intelligentsia waistcoat qui vaporware try-hard celiac pinterest you probably haven't heard of them godard dolore mollit. Literally eu single-origin coffee, ut pabst 8-bit roof party deserunt meggings magna.</p>`,
+        "author": "Heather Malloy",
+        "pic":"http://heatherdaniellehaws.com/images/heather-malloy2020.jpg"
+      },
+      {
+        "index": 2,
+        "date": "02-22-2019",
+        "img": "http://heatherdaniellehaws.com/images/FemaleNude2.jpg",
+        "alt": "Painting of a redheaded woman dressed in a red nightgown leaning against a wall.",
+        "title": "Blog Post Number Two",
+        "teaser":"Nisi dolor ethical, do ut enim nostrud mumblecore hexagon narwhal. Swag offal exercitation DIY franzen. Labore in brooklyn et mumblecore cliche nisi irony.",
+        "content": `<p>Nisi dolor ethical, do ut enim nostrud mumblecore hexagon narwhal. Swag offal exercitation DIY franzen. Labore in brooklyn et mumblecore cliche nisi irony. Af kombucha id literally meditation selfies chartreuse. Health goth adipisicing tilde occaecat stumptown affogato pabst do pork belly, selvage venmo.</p>
+
+        <p>Commodo slow-carb aute raw denim. Fingerstache gluten-free velit irure banjo exercitation. Tbh VHS crucifix, retro godard exercitation XOXO kombucha typewriter. Art party minim irure, godard dreamcatcher direct trade edison bulb glossier pabst. Brunch cred exercitation wolf meggings air plant poutine qui. Banjo aliqua chambray green juice, anim drinking vinegar authentic hoodie meggings hexagon. Microdosing culpa readymade 90's shaman selfies kickstarter commodo tumeric tousled eu.</p>
+
+        <p>Authentic dolore affogato gluten-free, incididunt artisan you probably haven't heard of them coloring book kitsch humblebrag chillwave. Offal keytar dolore, VHS voluptate exercitation waistcoat polaroid. Intelligentsia waistcoat qui vaporware try-hard celiac pinterest you probably haven't heard of them godard dolore mollit. Literally eu single-origin coffee, ut pabst 8-bit roof party deserunt meggings magna.</p>`,
+        "author": "Heather Malloy",
+        "pic":"http://heatherdaniellehaws.com/images/heather-malloy2020.jpg"
+      },
+      {
+        "index": 3,
+        "date": "03-03-2018",
+        "img": "http://heatherdaniellehaws.com/images/FemaleNude3.jpg",
+        "alt": "Painting of a redheaded woman dressed in a red nightgown leaning against a wall.",
+        "title": "Blog Post Number Three",
+        "teaser":"Nisi dolor ethical, do ut enim nostrud mumblecore hexagon narwhal. Swag offal exercitation DIY franzen. Labore in brooklyn et mumblecore cliche nisi irony.",
+        "content": `<p>Nisi dolor ethical, do ut enim nostrud mumblecore hexagon narwhal. Swag offal exercitation DIY franzen. Labore in brooklyn et mumblecore cliche nisi irony. Af kombucha id literally meditation selfies chartreuse. Health goth adipisicing tilde occaecat stumptown affogato pabst do pork belly, selvage venmo.</p>
+
+        <p>Commodo slow-carb aute raw denim. Fingerstache gluten-free velit irure banjo exercitation. Tbh VHS crucifix, retro godard exercitation XOXO kombucha typewriter. Art party minim irure, godard dreamcatcher direct trade edison bulb glossier pabst. Brunch cred exercitation wolf meggings air plant poutine qui. Banjo aliqua chambray green juice, anim drinking vinegar authentic hoodie meggings hexagon. Microdosing culpa readymade 90's shaman selfies kickstarter commodo tumeric tousled eu.</p>
+
+        <p>Authentic dolore affogato gluten-free, incididunt artisan you probably haven't heard of them coloring book kitsch humblebrag chillwave. Offal keytar dolore, VHS voluptate exercitation waistcoat polaroid. Intelligentsia waistcoat qui vaporware try-hard celiac pinterest you probably haven't heard of them godard dolore mollit. Literally eu single-origin coffee, ut pabst 8-bit roof party deserunt meggings magna.</p>`,
+        "author": "Heather Malloy",
+        "pic":"http://heatherdaniellehaws.com/images/heather-malloy2020.jpg"
+      }
+    ];
+  // capture parent div for blog posts
+  let blog = document.getElementById('blogAccordion');
+  // capture sidebar blog space
+  let blogSideBar = document.getElementById('sidebar-blog');
+
+  // loop through blog posts above
+  // pull data into templates provided
+  if(blog){
+    posts.forEach(function(el) {
+      // template for blog posts
+      let blogPost = (`<div class="card border-0">
+        <div class="card-header p-0" id="heading-${el.index}">
+          <h2 class="mb-0 p-0">
+            <button class="btn btn-dark btn-block" type="button" data-toggle="collapse" data-target="#post-${el.index}" aria-expanded="false" aria-controls="post-${el.index}">
+              <span class="float-left">
+              <strong>${el.title}</strong>
+              </span>
+              <span class="float-right">
+              ${el.date}
+              </span>
+            </button>
+          </h2>
+        </div>
+
+        <div id="post-${el.index}" class="collapse" aria-labelledby="${el.title}" data-parent="#blogAccordion">
+          <div class="card-body p-0 pt-3">
+            <p class="small text-secondary">Written by ${el.author}</p>
+            ${el.content}
+          </div>
+        </div>
+      </div>
+      `)
+
+      // add blog posts to accordion
+      blog.innerHTML += blogPost;
+    });
+
+    // make sure the first post is expanded initially
+    let expanded = document.getElementById('post-1');
+    expanded.classList.add("show");
+  }
+
+
+  // SIDEBAR
+  if(artSideBar){
+    let featured = art[Math.floor(Math.random()*art.length)];
+
+    //artSideBar.innerHTML = featured.index;
+    artSideBar.innerHTML = (`<figure class="m-0" id="art-${featured.index}">
+      <div class="art__img text-center overflow-hidden"><img class="art w-75" src="${featured.img}" alt="${featured.alt}"></div>
+      <figcaption class="text-center"><h5 class="art__title text-danger mt-2">${featured.title}</h5><span class="art__materials d-block">${featured.materials}</span><span class="art__artist d-block">${featured.artist}</span></figcaption>
+    </figure>
+    <p class="p-5 p-md-3 p-lg-4"><a class="btn btn-dark btn-block" href="art.html">See More >></a></p>`)
+    console.log(featured.index);
+  }
+
+  if(blogSideBar) {
+    let blogFeature = posts[0];
+    blogSideBar.innerHTML = (`<h4 class="mb-0">Title: ${blogFeature.title}</h4>
+      <small class="text-muted mt-0">by ${blogFeature.author}</small>
+      <p>${blogFeature.teaser}</p>
+      <p><a class="btn btn-dark btn-block" href="blog.html">Read More >></a></p>`);
+  }
+
+  // MAIN CAROUSEL
+  // capture carousel inner space
+  let carousel = document.getElementById('mainCarouselInner');
+
+  if(carousel){
+    let carouselImg = art.slice(0, 1, 2);
+    console.log(carouselImg);
+    carouselImg.forEach(function(el){
+      let images = (`<div class="carousel-item">
+       <img src="${el.img}" class="d-block w-100" alt="${el.alt}">
+       <div class="carousel-caption d-none d-md-block bg-dark">
+         <h5>${el.title}</h5>
+         <p>${el.materials} | <small>by ${el.artist}</small>.</p>
+       </div>
+     </div>`);
+
+      // add imagesto carousel
+      carousel.innerHTML += images;
+
+      // make sure the first image is visible on page load
+      carousel.firstElementChild.classList.add("active");
+    });
+  }
+
  })
