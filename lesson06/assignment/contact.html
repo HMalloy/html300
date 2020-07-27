@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <script src="script/script.js"></script>
         <link rel="stylesheet" href="css/style.css" />
-        <title>Met Art | Home</title>
+        <title>Met Art | Contact</title>
     </head>
     <body>
         <main class="container-fluid p-0">
@@ -21,8 +21,8 @@
 
             <div class="collapse navbar-collapse" id="navBarToggle">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="art.html">Art</a>
@@ -30,8 +30,8 @@
                 <li class="nav-item">
                   <a class="nav-link" href="blog.html">Blog</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact</a>
+                <li class="nav-item active">
+                  <a class="nav-link" href="contact.html">Contact <span class="sr-only">(current)</span></a>
                 </li>
               </ul>
             </div>
@@ -39,41 +39,57 @@
           <!-- END main header nav -->
           <!-- START main content -->
           <div class="container-fluid p-5">
-            <div class="row">
+            <h1>Contact!</h1>
+            <div class="row d-flex justify-content-between">
               <!-- main content on the left -->
-              <div class="col-12">
-                <h1>Welcome to Met Art!</h1>
-                <p>A fun site to play with the art of The Met!</p>
+              <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+                <form>
+                  <div class="row">
+                    <div class="col-12 col-sm-6">
+                      <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input class="form-control" type="text" name="Name" id="firstName">
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                      <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input class="form-control" type="text" name="Name" id="lastName">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="message" class="mb-0">Message</label>
+                    <small id="messageHelp" class="form-text text-muted mt-0 mb-2">What can we help you with today?</small>
+                    <textarea class="form-control" id="message"></textarea>
+                  </div>
+                  <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="newsletter">
+                    <label class="form-check-label" for="newsletter">Sign me up for a monthly newsletter!</label>
+                  </div>
+                  <button type="submit" class="btn btn-dark">Submit</button>
+                  <small id="submitHelp" class="form-text text-muted">You will receive a response within 2 business days.</small>
+                </form>
               </div>
-              <div class="col-12 col-md-4">
+              <!-- sidebar content on the right -->
+              <div class="col-12 col-md-4 mt-3 mt-md-0" id="sidebar">
                 <h4 class="bg-danger text-white p-2 text-center mb-0 rounded-top">Featured Art</h4>
                 <div class="border border-danger" id="sidebar-art">
                   <!-- featured art-piece here -->
                 </div>
-              </div>
-              <div class="col-12 col-md-4">
-                <h4 class="bg-danger text-white p-2 text-center mb-0 rounded-top">Latest Blog Post</h4>
+                <h4 class="bg-danger text-white p-2 text-center mb-0">Latest Blog Post</h4>
                 <div class="border border-danger rounded-bottom p-5 p-md-3 p-lg-4" id="sidebar-blog">
                   <!-- latest blog post here -->
                 </div>
               </div>
-              <div class="col-12 col-md-4">
-                <h4 class="bg-danger text-white p-2 text-center mb-0 rounded-top">Upcoming Events</h4>
-                <div class="border border-danger rounded-bottom p-5 p-md-3 p-lg-4" id="sidebar-events">
-                  <h5 class="text-danger mt-2">Meet the Artists!</h5>
-                  <p>
-                    <strong>Date:</strong> July 22nd<br>
-                    <strong>Time:</strong> 7PM - 9:30PM<br>
-                    <strong>Location:</strong> Main Ballroom
-                  </p>
-                  <p><a class="btn btn-dark btn-block" href="contact.html">Contact Us for Details >></a></p>
-                </div>
-              </div>
+            </div>
           </div>
-        </div>
-        <!-- END main content -->
-
-
+          <!-- END main content -->
         </main>
 
       <!-- Optional JavaScript -->

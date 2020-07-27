@@ -4,3 +4,19 @@
 @import 'settings.responsive';
 @import 'components.content';
 
+.art {
+  img {
+    opacity: .75;
+    transition: all 0.2s;
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+  &__img.rounded-circle {
+    transition: all 0.2s;
+    &:hover {
+      border-radius: 0!important;
+    }
+  }
+}
