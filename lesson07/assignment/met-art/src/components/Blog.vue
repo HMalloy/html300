@@ -91,7 +91,7 @@ export default {
 
 <style>
 /* I cannot get the accordion to work by building it iteratively.
-I can see the correct classes being added, but the style attribute is not being
+I can see the correct classes being added via dev tools, but the style attribute is not being
 removed. This is a hacky-temporary solution so that I can submit this assignment */
 .collapse.show {
   display: block!important;
