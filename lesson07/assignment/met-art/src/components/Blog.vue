@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <div role="tablist" id="blogAccordion">
+    <div role="tablist" id="my-accordion">
       <!-- use bootstrap-vue accordion component -->
       <!-- LOOP through blog posts -->
       <b-card v-for="post in posts" :key="post" no-body class="mb-1">
@@ -15,11 +15,11 @@
             </span>
           </b-button>
         </b-card-header>
-        <b-collapse v-bind:id="post.id" visible accordion="blogAccordion" role="tabpanel">
+        <b-collapse v-bind:id="post.id" :visible="post.visible" accordion="my-accordion" role="tabpanel">
           <b-card-body>
             <b-card-text small class="text-secondary">Written by {{ post.author }}</b-card-text>
             <b-card-text v-html="post.content">
-              <!-- load content for each blog post from data -->
+              <!-- load content for each blog post from data-->
             </b-card-text>
           </b-card-body>
         </b-collapse>
@@ -37,6 +37,7 @@ export default {
       posts: [
           {
             id: "post-1",
+            visible: true,
             heading: "header-1",
             date: "01-11-2020",
             img: "http://heatherdaniellehaws.com/images/FemaleNude1.jpg",
@@ -53,6 +54,7 @@ export default {
           },
           {
             id: "post-2",
+            visible: false,
             heading: "header-2",
             date: "02-22-2019",
             img: "http://heatherdaniellehaws.com/images/FemaleNude2.jpg",
@@ -69,6 +71,7 @@ export default {
           },
           {
             id: "post-3",
+            visible: false,
             heading: "header-3",
             date: "03-03-2018",
             img: "http://heatherdaniellehaws.com/images/FemaleNude3.jpg",
@@ -92,8 +95,9 @@ export default {
 <style>
 /* I cannot get the accordion to work by building it iteratively.
 I can see the correct classes being added via dev tools, but the style attribute is not being
-removed. This is a hacky-temporary solution so that I can submit this assignment */
-.collapse.show {
+removed. This is a hacky-temporary solution so that I can submit this assignment
+I think that it has something to do with "visible" in the attributes */
+/* .collapse.show {
   display: block!important;
-}
+} */
 </style>

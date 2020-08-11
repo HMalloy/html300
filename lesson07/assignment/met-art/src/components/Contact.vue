@@ -8,14 +8,18 @@
           <b-form-group id="firstName" label="First Name" label-for="firstNameInput">
             <b-form-input
               id="firstNameInput"
+              v-model="firstName"
             ></b-form-input>
+            <small class="text-secondary">{{firstName}}</small>
           </b-form-group>
         </b-col>
         <b-col md="6">
           <b-form-group id="lastName" label="First Name" label-for="lastNameInput">
             <b-form-input
               id="lastNameInput"
+              v-model="lastName"
             ></b-form-input>
+            <small class="text-secondary">{{lastName}}</small>
           </b-form-group>
         </b-col>
       </b-row>
@@ -27,6 +31,7 @@
       >
         <b-form-input
           id="emailAddresInput"
+          v-model="emailAddress"
           type="email"
         ></b-form-input>
       </b-form-group>
@@ -37,8 +42,8 @@
         <small class="text-secondary">What can we help you with today?</small>
         <b-form-textarea
           id="mainMessageInput"
-          v-model="text"
           rows="3"
+          v-model="message"
         ></b-form-textarea>
       </b-form-group>
       <b-form-checkbox
@@ -49,10 +54,18 @@
       >
         Sign me up for a monthly newsletter!
       </b-form-checkbox>
-
       <b-button @click="messageSubmitted=true" class="mt-3" type="button" variant="dark">Submit</b-button>
       <small id="submitHelp" class="form-text text-muted">You will receive a response within 2 business days.</small>
     </b-form>
+    <b-card title="Your Message" sub-title="This is what your message to us looks like" class="mt-5">
+      <p>
+        <small>
+          From: {{firstName}} {{lastName}}<br>
+          Email: {{emailAddress}}
+        </small>
+      </p>
+      <p>Message: {{message}}</p>
+    </b-card>
   </div>
 </template>
 
@@ -62,7 +75,11 @@ export default {
   data () {
     return {
       msg: 'Contact',
-      messageSubmitted: false
+      messageSubmitted: false,
+      firstName: '',
+      lastName: '',
+      emailAddress: '',
+      message: ''
     }
   }
 }
