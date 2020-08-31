@@ -1,0 +1,19 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+
+.art {
+  img {
+    opacity: .75;
+    transition: all 0.2s;
+  }
+  &:hover img {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &__img.rounded-circle, &__btn.rounded-circle {
+    transition: all 0.2s;
+    &:hover {
+      border-radius: 0!important;
+    }
+  }
+}

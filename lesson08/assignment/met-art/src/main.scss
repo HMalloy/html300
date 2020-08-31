@@ -1,0 +1,31 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+
+.art {
+  // start of 75% opacity
+  img {
+    opacity: .75;
+    transition: all 0.2s;
+    // on clicking image add border and 100% opacity
+    &.active {
+      border:3px solid #dc3545;
+      opacity:1;
+    }
+    // on hover go from circle to square
+    &:hover {
+      border-radius: 0!important;
+    }
+  }
+  // on hover image 100% opacity
+  &:hover img {
+    opacity: 1;
+    cursor: pointer;
+  }
+  // on hover transition from circle to square button
+  &__img.rounded-circle, &__btn.rounded-circle {
+    transition: all 0.2s;
+    &:hover {
+      border-radius: 0!important;
+    }
+  }
+}
