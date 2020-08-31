@@ -8,7 +8,7 @@
       <!-- LOOP through blog posts -->
       <b-card v-for="post in posts" :key="post" no-body class="mb-1">
         <b-card-header header-tag="header" class="p-0 m-0" role="tab">
-          <b-button block data-toggle="collapse" :data-target="('#' + post.id)" role="button" aria-expanded="false" v-bind:aria-controls="post.id" variant="dark">
+          <b-button block data-toggle="collapse" v-b-toggle="post.id" role="button" aria-expanded="false" v-bind:aria-controls="post.id" variant="dark">
             <span class="float-left">
               <strong>{{ post.title }}</strong>
             </span>
@@ -92,13 +92,3 @@ export default {
   }
 }
 </script>
-
-<style>
-/* I cannot get the accordion to work by building it iteratively.
-I can see the correct classes being added via dev tools, but the style attribute is not being
-removed. This is a hacky-temporary solution so that I can submit this assignment
-I think that it has something to do with "visible" in the attributes */
-/* .collapse.show {
-  display: block!important;
-} */
-</style>
